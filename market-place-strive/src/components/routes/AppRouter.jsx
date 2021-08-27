@@ -18,6 +18,7 @@ function AppRouter() {
                         key={route.path}
                         path={route.path}
                         exact={route.exact}
+                        render={route.component}
                         />
                     ) )
                 }
