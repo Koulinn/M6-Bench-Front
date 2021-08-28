@@ -5,11 +5,10 @@ import { withRouter } from 'react-router-dom'
 import request from '../../lib/requests'
 
 function BackOffice(props) {
-    const [category, setCategory] = useState({category: ''})
+    const [category, setCategory] = useState({category: 'cake'})
     const [product, setProduct] = useState({
         name: '',
         brand: '',
-        categoryId: '',
         price: '',
         description: '',
         image: 'https://www.silverringsplint.com/wp-content/uploads/2018/05/Product-Image-Coming-Soon.png'
@@ -18,7 +17,7 @@ function BackOffice(props) {
     const postRequest = async (endpoint, data) => {
         try {
             const response = await request.postJSON(endpoint, data)
-            console.log(response)
+            return response
         } catch (error) {
             console.log(error)
         }
@@ -30,6 +29,17 @@ function BackOffice(props) {
                 [key]: value
         })
     }
+
+    const getCategoryId = async () =>{
+        try {
+            const catData = await request.postJSON('category', category)
+            return catData.id
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    getCategoryId()
+
 
     return (
         <Container className="mt-5">
