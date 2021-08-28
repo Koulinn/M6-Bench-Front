@@ -104,14 +104,14 @@ function BackOffice(props) {
                 <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text"
-                        placeholder="Enter product Name"
+                        placeholder="Enter product name"
                         onChange={(e) => inputHandler('name', e.target.value, setProduct, product)}
                     />
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridBrand">
                     <Form.Label>Brand</Form.Label>
                     <Form.Control type="text"
-                        placeholder="Enter product Brand"
+                        placeholder="Enter product brand"
                         onChange={(e) => inputHandler('brand', e.target.value, setProduct, product)}
                     />
                 </Form.Group>
