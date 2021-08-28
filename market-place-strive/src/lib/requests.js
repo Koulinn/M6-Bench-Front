@@ -9,13 +9,13 @@ export const getRequest = async (url)=>{
     }
 }
 
-export const postJSON = async (url, data, contentType)=>{
+export const postJSON = async (url, data)=>{
     try {
         const response = await fetch(`${process.env.REACT_APP_URL_PROD}${url}`,{
             method: 'post',
             body: await JSON.stringify({...data}),
             headers:{
-                ...contentType
+                "Content-Type": "application/json"
             }
 
         })
