@@ -93,12 +93,11 @@ function BackOffice(props) {
     return (
         <Container className="mt-5">
             <h2 className="px-3 mb-4">{`Add product`}</h2>
-            {created || error ? <AlertMessage
-            className="px-3 my-3" 
+            {created || error ? <div className="px-3 my-3"><AlertMessage 
                 variant={created? 'success': 'danger'} 
                 message={created? 'Product added successfully': `I'm so sorry An error happened`}
-            /> : <></>}
-            {isLoading? <Spinner animation='border' role='status' className="mx-3 my-3"/> : <></>}
+            /></div> : <></>}
+            {isLoading? <Spinner animation='border' role='status' className="m-3"/> : <></>}
             <Form id="form">
 
                 <Form.Group as={Col} controlId="formGridName">
