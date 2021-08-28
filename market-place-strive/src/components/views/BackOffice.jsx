@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import { Form, Button, Col, Container } from 'react-bootstrap'
+import { Form, Button, Col, Container, Spinner } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import request from '../../lib/requests'
+import AlertMessage from '../Auxs/AlertMessage'
 
 function BackOffice(props) {
     const [category, setCategory] = useState({ category: 'cake' })
@@ -14,6 +15,9 @@ function BackOffice(props) {
         image: 'https://www.silverringsplint.com/wp-content/uploads/2018/05/Product-Image-Coming-Soon.png'
     })
     const [image, setImage] = useState(null)
+    const [created, setCreated] = useState(false)
+    const [error, setError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const postRequest = async (endpoint, data) => {
         try {
@@ -59,23 +63,43 @@ function BackOffice(props) {
 
     const createProduct = async (e) => {
         try {
+            setIsLoading(true)
             e.preventDefault()
             const prodData = await request.postJSON(`product/${await getCategoryId()}`, product)
-            console.log(prodData, 'prod data')
             if(image){
                 const prodWithImage = await uploadImage(prodData.id)
+                if(prodWithImage.id){
+                    setError(false)
+                    setCreated(true)
+                    setIsLoading(false)
+                    setTimeout(()=>setCreated(false), 5000)
+                    resetForm()
+                } else {
+                    setError(true)
+                }
                 console.log(prodWithImage)
             }
         } catch (error) {
+            setError(true)
             console.log(error)
         }
     }
 
+    const resetForm = () =>{
+        document.getElementById('form').reset()
+
+    }
 
     return (
         <Container className="mt-5">
             <h2 className="px-3 mb-4">{`Add product`}</h2>
-            <Form>
+            {created || error ? <AlertMessage
+            className="px-3 my-3" 
+                variant={created? 'success': 'danger'} 
+                message={created? 'Product added successfully': `I'm so sorry An error happened`}
+            /> : <></>}
+            {isLoading? <Spinner animation='border' role='status' className="mx-3 my-3"/> : <></>}
+            <Form id="form">
 
                 <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Name</Form.Label>
