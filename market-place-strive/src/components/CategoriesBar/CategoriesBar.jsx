@@ -6,6 +6,7 @@ import { Button, Container, Spinner } from 'react-bootstrap'
 function CategoriesBar({setProducts}) {
     const [categories, setCategories] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [allProducts, setAllProducts] = useState([])
 
     useEffect(() => {
         try {
@@ -18,6 +19,8 @@ function CategoriesBar({setProducts}) {
     const requestData = async () => {
         const serverData = await getRequest('category')
         setCategories(serverData.data.slice(0, 9))
+        const getAllProducts = await getRequest('product')
+        setAllProducts(getAllProducts.data.slice(0,8))
         setIsLoading(false)
     }
 
@@ -27,7 +30,7 @@ function CategoriesBar({setProducts}) {
     return (
         <Container className="d-flex justify-content-between">
             {isLoading ? <Spinner animation='border' role='status' className="m-3" /> : <></>}
-            {!isLoading ? <Button variant="secondary">All</Button> : <></>}
+            {!isLoading ? <Button variant="secondary"onClick={()=>setProducts({allProducts})}>All</Button> : <></>}
             {categories.map(category => {
                 return <Button key={category.id} variant="secondary" onClick={()=>setProducts({category})}
                 >{category.category}</Button>
