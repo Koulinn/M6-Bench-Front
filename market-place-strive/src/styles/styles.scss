@@ -5,3 +5,31 @@
     background-position-x: center;
     background-size: cover;
 }
+
+button{
+    text-transform: capitalize;
+}
+
+.cards-decker{
+    h2{
+        text-transform: capitalize;
+    }
+    .card{
+        position: relative;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        img{
+            height: 256px;
+            width: 256px;
+            object-fit: cover;
+        }
+        .badge{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
+        .card-title{
+            text-transform: capitalize;
+        }
+    }
+}
