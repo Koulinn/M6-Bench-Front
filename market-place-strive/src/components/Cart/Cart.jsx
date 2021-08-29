@@ -2,9 +2,12 @@ import React from 'react'
 import CartItem from './CartItem'
 import { useEffect, useState } from 'react'
 import { getRequest } from '../../lib/requests'
+import TableHeader from './TableHeader'
 
 function Cart({toggleCart, setToggleCart, setUpdatedCart, updateCart}) {
     const [cartBasket, setCartBasket] = useState(false)
+
+    useEffect(()=>setCartBasket(cartBasket),[updateCart])
 
 
     useEffect(() => {
@@ -27,7 +30,8 @@ function Cart({toggleCart, setToggleCart, setUpdatedCart, updateCart}) {
             {!cartBasket ? <h6>Shpping basket empty</h6> :
             <>
                 <div className="mt-4">
-                    {cartBasket.prodByGroups.map(group=><CartItem group={group} updateCart={updateCart}/>)}
+                    {cartBasket? <TableHeader/> : <></>}
+                    {cartBasket.prodByGroups.map((group, i)=><CartItem key={i}  group={group} setUpdatedCart={setUpdatedCart} updateCart={updateCart}/>)}
                 </div>
                 <div className="mt-5">
                     <p className="text-right">Total: £ {cartBasket.sumTotal}</p>
