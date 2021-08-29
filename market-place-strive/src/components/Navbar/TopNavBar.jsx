@@ -4,9 +4,9 @@ import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 function TopNavBar({toggleCart, setToggleCart}) {
     return (
         <div id="navBar">
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="">
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="">
                 <Container>
-                    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="/"><img src="https://res.cloudinary.com/koulin/image/upload/v1629744705/Portfolio/Logo_1_fv6qih.png" width="56px" height="56px"></img></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
