@@ -6,7 +6,7 @@ import DisplayCards from '../DisplayCards/DisplayCards'
 import { getRequest } from '../../lib/requests'
 import PaginationMenu from '../PaginationMenu/PaginationMenu'
 
-function Home(props) {
+function Home({setUpdatedCart, updateCart}) {
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState('all')
     const [offset, setOffset] = useState(0)
@@ -40,7 +40,7 @@ function Home(props) {
         <div>
             <Hero />
             <CategoriesBar setProducts={setProducts} setFilter={setFilter} className="mt-5" />
-            <DisplayCards products={products} filter={filter} />
+            <DisplayCards setUpdatedCart={setUpdatedCart} updateCart={updateCart} products={products} filter={filter} />
             <PaginationMenu offset={offset} setOffset={setOffset} setRequestDataPagination={setRequestDataPagination} requestDataPagination={requestDataPagination}/>
 
         </div>
