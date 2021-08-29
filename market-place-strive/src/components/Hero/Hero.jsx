@@ -18,7 +18,7 @@ function Hero() {
     },[])
 
     return (
-        <Jumbotron id='hero' style={{ backgroundImage: generalAux.heroBG(heroImg) }} fluid>
+        <Jumbotron id='hero' style={{ backgroundImage: generalAux.heroBG(heroImg) }} className="d-flex flex-column justify-content-end" fluid>
             <Container>
                 <h1 className='text-white'>Latest Release</h1>
                 <p className='text-white'>
