@@ -1,0 +1,104 @@
+#navBar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+#hero {
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position-y: 43%;
+  background-position-x: center;
+  background-size: cover;
+  height: 480px;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.cards-decker {
+  h2 {
+    text-transform: capitalize;
+  }
+  .card {
+    position: relative;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    img {
+      height: 256px;
+      width: 256px;
+      object-fit: cover;
+    }
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+    .card-title {
+      text-transform: capitalize;
+    }
+  }
+}
+
+#cart {
+  max-width: 640px;
+  max-height: 384px;
+  min-width: 360px;
+  position: fixed;
+  z-index: 10;
+  top: 82px;
+  right: 56px;
+  border-radius: 0 0 16px 16px;
+  // background-color: rgba(114, 112, 110, 0.945);
+  background-color: rgb(56 75 68 / 70%);
+ backdrop-filter: blur(5px);
+  color: white;
+  padding: 32px;
+  h4 {
+    cursor: pointer;
+  }
+  .cart--Item > p:first-child {
+    width: 30%;
+  }
+  .cart--Item > p:not(:first-child) {
+    width: 20%;
+    text-align: center;
+  }
+  .cart--Item > div{
+    width: 20%;
+  }
+}
+
+#cart.cart--show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.7s all;
+  overflow-y: scroll;
+}
+
+#cart.cart--hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: 1s all;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#cart::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#cart::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+#cart::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+#cart::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
