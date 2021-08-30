@@ -63,6 +63,9 @@ button {
   width: 20%;
   text-align: center;
 }
+#cart .cart-delete-icon {
+  cursor: pointer;
+}
 #cart .cart--Item > div {
   width: 20%;
 }
