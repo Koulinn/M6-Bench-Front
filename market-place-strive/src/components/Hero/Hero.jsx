@@ -11,7 +11,7 @@ function Hero() {
     const getJumboImage = async () => {
         const data = await request.getRequest('product')
         console.log(data)
-        setHeroImg(data.data[5].image.length> 10 ? data.data[5].image : false)
+        setHeroImg( data.data[5].image && data.data[5].image.length> 10 ? data.data[5].image : false)
     }
     useEffect(()=>{
         getJumboImage()
